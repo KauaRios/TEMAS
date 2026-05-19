@@ -1,0 +1,120 @@
+/* sweeper.rasi — Tema rofi do Sweeper */
+
+* {
+    bg0:        #0d0e11;
+    bg1:        #13151a;
+    bg2:        #1c1f27;
+    bg3:        #252933;
+    border-col: #2e3340;
+    accent:     #7c6af7;
+    accent-dim: #7c6af72e;
+    fg0:        #e2e4ea;
+    fg1:        #8b8fa8;
+    fg2:        #3e4257;
+
+    background-color: transparent;
+    text-color:       @fg0;
+    border:           0;
+    margin:           0;
+    padding:          0;
+    spacing:          0;
+}
+
+window {
+    background-color: @bg0;
+    border:           1;
+    border-color:     @border-col;
+    border-radius:    14px;
+    width:            760px;
+    padding:          0;
+}
+
+mainbox {
+    background-color: transparent;
+    children:         [ inputbar, listview ];
+    spacing:          0;
+}
+
+inputbar {
+    background-color: @bg1;
+    border-radius:    14px 14px 0 0;
+    border:           0 0 1 0;
+    border-color:     @border-col;
+    padding:          14px 18px;
+    spacing:          10px;
+    children:         [ prompt, entry ];
+}
+
+prompt {
+    background-color: @accent-dim;
+    text-color:       @accent;
+    border-radius:    6px;
+    padding:          4px 10px;
+    font:             "JetBrains Mono 10";
+    vertical-align:   0.5;
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg0;
+    placeholder:      "buscar...";
+    placeholder-color: @fg2;
+    font:             "JetBrains Mono 11";
+    vertical-align:   0.5;
+}
+
+listview {
+    background-color: @bg1;
+    border-radius:    0 0 14px 14px;
+    padding:          14px;
+    spacing:          8px;
+    columns:          4;
+    lines:            3;
+    fixed-height:     true;
+    scrollbar:        false;
+}
+
+element {
+    background-color: @bg2;
+    border-radius:    10px;
+    orientation:      vertical;
+    padding:          8px 6px 10px 6px;
+    spacing:          6px;
+    border:           1;
+    border-color:     @border-col;
+    cursor:           pointer;
+}
+
+element normal.normal {
+    background-color: @bg2;
+    border-color:     @border-col;
+}
+
+element selected.normal {
+    background-color: @accent-dim;
+    border-color:     @accent;
+}
+
+element alternate.normal {
+    background-color: @bg2;
+    border-color:     @border-col;
+}
+
+element-icon {
+    background-color: @bg3;
+    border-radius:    7px;
+    size:             110px;
+    horizontal-align: 0.5;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       @fg0;
+    font:             "JetBrains Mono 10";
+    horizontal-align: 0.5;
+    vertical-align:   0.5;
+}
+
+element-text selected {
+    text-color: @accent;
+}
