@@ -106,8 +106,17 @@ for comando in comandos:
 # =========================
 
 pasta_wallpapers = pasta_do_tema / "wallpapers"
-wallpaper_atual = pasta_wallpapers / "wallpaper.png"
 config_hyprpaper = Path.home() / ".config" / "hypr" / "hyprpaper.conf"
+
+# PROCURA qualquer .png ou .jpg dentro da pasta de wallpapers
+imagens = list(pasta_wallpapers.glob("*.png")) + list(pasta_wallpapers.glob("*.jpg"))
+
+if not imagens:
+    print("Nenhuma imagem .png ou .jpg encontrada na pasta de wallpapers.")
+    sys.exit()
+
+# Pega a primeira imagem encontrada como wallpaper_atual
+wallpaper_atual = imagens[0]
 
 
 if wallpaper_atual.exists():
