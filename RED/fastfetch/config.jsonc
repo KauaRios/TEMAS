@@ -1,0 +1,85 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/assets/image.png",
+    "type": "auto",
+    "padding": {
+      "top": 2,
+      "left": 2
+    },
+    "width": 25,
+    "height": 15
+  },
+
+  "display": {
+    "separator": " "
+  },
+
+    "modules": [
+    "break",
+    {
+      "type": "custom",
+      "format": "\u001b[38;5;175m ╔════════════════════════════════════════╗\u001b[0m"
+    },
+    {
+      "type": "title",
+      "key": "\u001b[38;5;160m ║ \u001b[1;15mUSER\u001b[0m",
+      "color": {
+        "user": "white",
+        "at": "red",
+        "host": "white"
+      }
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;5;175m ╠════════════════════════════════════════╣\u001b[0m"
+    },
+    {
+      "type": "os",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;250m󰣇 OS    \u001b[0m"
+    },
+    {
+      "type": "kernel",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;245m󰒋 KERN  \u001b[0m"
+    },
+    {
+      "type": "uptime",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;240m󱎫 UP    \u001b[0m"
+    },
+    {
+      "type": "wm",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;235m󱂬 WM    \u001b[0m"
+    },
+    {
+      "type": "shell",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;250m󱆃 SHELL \u001b[0m"
+    },
+    {
+      "type": "packages",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;245m󰏖 PKGS  \u001b[0m"
+    },
+    {
+      "type": "cpu",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;240m CPU   \u001b[0m"
+    },
+    {
+      "type": "gpu",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;235m󱤓 GPU   \u001b[0m"
+    },
+    {
+      "type": "memory",
+      "key": "\u001b[38;5;160m ║ \u001b[38;5;250m RAM   \u001b[0m"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;5;88m  ╚═══════════════════════════════════════╝\u001b[0m"
+    },
+    "break",
+    {
+      "type": "colors",
+      "symbol": "circle",
+      "paddingLeft": 2
+    },
+    "break"
+  ]
+}

@@ -1,0 +1,218 @@
+/*
+ * Waybar — "Ember Nocturne"
+ * Conceito: escuridão preto-avermelhada com luz vermelha caindo do topo
+ * e reflexos rosados. Cada módulo é uma "brasa": linha de luz no topo,
+ * estados acesos como carvão incandescente.
+ *
+ * Paleta extraída de RED/wallpapers/wallpaper.jpg:
+ *   fundo      #120304   fundo-alt  #2F0507   fundo-pro  #50080C
+ *   carmim     #E0141C   vivo       #F9182A   escuro     #8C0A10
+ *   rosa       #EE6F89   rosa-clar  #EC97AB   rosa-fria  #AD4159
+ *   texto      #E8D5D9   texto-2    #9A8A90   cinza      #786884
+ */
+
+* {
+    font-family: "JetBrains Mono Nerd Font", "Fira Code", monospace;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#waybar {
+    background: transparent;
+    color: #E8D5D9;
+}
+
+/* ============================================================
+   Base dos módulos — brasas flutuantes sobre o wallpaper
+   (barra inferior, luz subindo do fundo)
+   ============================================================ */
+#workspaces,
+#window,
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#wireplumber,
+#tray,
+#custom-power,
+#power-profiles-daemon {
+    background: linear-gradient(180deg,
+                rgba(47, 5, 7, 0.92) 0%,
+                rgba(18, 3, 4, 0.88) 55%,
+                rgba(10, 2, 3, 0.9) 100%);
+    color: #E8D5D9;
+    padding: 0 15px;
+    margin: 4px 3px;
+    border-radius: 9px;
+    /* assinatura: brasa com luz na base (barra inferior) */
+    border-bottom: 1px solid rgba(248, 24, 42, 0.4);
+    border-top: 1px solid rgba(248, 24, 42, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Separadores de zona — marcam os grupos visualmente */
+#custom-sep-left,
+#custom-sep-right {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    min-width: 2px;
+    margin: 6px 2px;
+    background: linear-gradient(180deg,
+                rgba(248, 24, 42, 0.0) 0%,
+                rgba(248, 24, 42, 0.35) 50%,
+                rgba(248, 24, 42, 0.0) 100%);
+}
+
+/* ============================================================
+   Workspaces — brasas individuais
+   ============================================================ */
+#workspaces {
+    background: rgba(10, 2, 3, 0.92);
+    border: none;
+    border-radius: 9px;
+    box-shadow: inset 0 0 12px rgba(224, 20, 28, 0.12);
+    padding: 2px 4px;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    color: #786884;              /* brasa apagada */
+    background: transparent;
+    font-size: 16px;
+    margin: 2px 2px;
+    border-radius: 5px;
+    transition: all 0.18s ease-in-out;
+}
+
+#workspaces button.active {
+    color: #F6EAEE;
+    background: linear-gradient(180deg, #8C0A10 0%, #E0141C 100%);
+    border-top: 1px solid rgba(255, 180, 190, 0.6);   /* luz no topo da brasa */
+    box-shadow: 0 0 10px rgba(224, 20, 28, 0.55);      /* brilho incandescente */
+}
+
+#workspaces button:hover {
+    color: #EE6F89;
+    background: rgba(224, 20, 28, 0.15);
+    box-shadow: 0 0 8px rgba(248, 24, 42, 0.25);
+}
+
+#workspaces button.urgent {
+    color: #F9182A;
+    border-top: 1px solid rgba(248, 24, 42, 0.8);
+    animation: blink 0.6s infinite alternate;
+}
+
+/* ============================================================
+   Janela Ativa — discreta
+   ============================================================ */
+#window {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #9A8A90;
+    font-style: italic;
+}
+
+/* ============================================================
+   Relógio — núcleo central destacado (ponto de luz rosa)
+   ============================================================ */
+#clock {
+    color: #EE6F89;                          /* reflexo da luz */
+    font-size: 14px;
+    padding: 0 24px;
+    background: linear-gradient(180deg, #2F0507 0%, #1A0405 100%);
+    border-bottom: 1px solid rgba(238, 111, 137, 0.55);
+    box-shadow: 0 0 14px rgba(238, 111, 137, 0.25);
+    text-shadow: 0 0 8px rgba(238, 111, 137, 0.4);
+}
+
+/* ============================================================
+   Status do sistema
+   ============================================================ */
+#cpu    { color: #A08A9C; }
+#memory { color: #786884; }
+#network{ color: #9A8A90; }
+#wireplumber { color: #A08A9C; }
+
+#temperature {
+    color: #9A8A90;
+}
+
+#temperature.critical {
+    background: linear-gradient(180deg, #8C0A10 0%, #50080C 100%);
+    color: #F9182A;
+    border-top: 1px solid rgba(248, 24, 42, 0.7);
+    box-shadow: 0 0 10px rgba(248, 24, 42, 0.4);
+}
+
+#battery {
+    color: #786884;
+}
+
+#battery.charging, #battery.plugged {
+    color: #EE6F89;
+    text-shadow: 0 0 6px rgba(238, 111, 137, 0.4);
+}
+
+#battery.critical:not(.charging) {
+    background-color: #E0141C;
+    color: #120304;
+    border-top: 1px solid rgba(255, 220, 224, 0.8);
+    box-shadow: 0 0 12px rgba(224, 20, 28, 0.6);
+    animation: blink 0.5s infinite alternate;
+}
+
+/* ============================================================
+   Power — núcleo da chama (âncora da barra)
+   canto direito totalmente arredondado, esquerdo reto
+   ============================================================ */
+#custom-power {
+    background: linear-gradient(180deg, #8C0A10 0%, #E0141C 100%);
+    color: #F6EAEE;
+    padding: 0 16px;
+    margin: 4px 0 4px 3px;
+    border: none;
+    border-bottom: 1px solid rgba(255, 210, 214, 0.7);   /* luz na base (chama) */
+    border-radius: 10px 0 0 10px;                         /* assimétrica, canto direito */
+    box-shadow: 0 0 14px rgba(224, 20, 28, 0.5);
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+#custom-power:hover {
+    background: linear-gradient(180deg, #E0141C 0%, #F9182A 100%);
+    color: #FFFFFF;
+    box-shadow: 0 0 20px rgba(248, 24, 42, 0.8);
+}
+
+/* ============================================================
+   Tray
+   ============================================================ */
+#tray {
+    background: rgba(47, 5, 7, 0.8);
+}
+
+/* ============================================================
+   Animações e power-profiles
+   ============================================================ */
+@keyframes blink {
+    to {
+        opacity: 0.4;
+    }
+}
+
+#power-profiles-daemon.power-saver {
+  color: #6E7A58;
+}
+
+#power-profiles-daemon.performance {
+  color: #F9182A;
+  text-shadow: 0 0 6px rgba(248, 24, 42, 0.5);
+}

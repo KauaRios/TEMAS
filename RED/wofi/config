@@ -1,0 +1,13 @@
+width=450
+height=400
+location=center
+show=drun
+prompt=Procurar...
+filter_rate=100
+allow_images=true
+hide_scroll=true
+no_actions=false
+halign=fill
+orientation=vertical
+content_halign=fill
+insensitivy=true

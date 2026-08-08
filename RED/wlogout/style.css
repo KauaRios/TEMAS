@@ -1,0 +1,77 @@
+/*
+ * wlogout — "Ember Nocturne"
+ * Brasas apagadas na base; hover vira carvão incandescente.
+ * Hierarquia de risco: ações perigosas (shutdown/reboot) com brasa
+ * mais forte; ações seguras (lock/suspend) com luz rosa suave.
+ */
+
+* {
+    background-image: none;
+    box-shadow: none;
+    font-family: "JetBrains Mono Nerd Font", "Fira Code", monospace;
+    transition: all 0.25s ease-in-out;
+}
+
+window {
+    background-color: rgba(10, 2, 3, 0.94);
+}
+
+button {
+    color: #E8D5D9;
+    background-color: rgba(47, 5, 7, 0.5);
+    border-radius: 20px;
+    border: 1px solid rgba(224, 20, 28, 0.25);
+    margin: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+}
+
+/* brasa acesa no hover */
+button:focus, button:active, button:hover {
+    background-color: transparent;
+    background-image: linear-gradient(180deg, #E0141C 0%, #8C0A10 100%);
+    border: 1px solid rgba(255, 200, 206, 0.7);
+    color: #F6EAEE;
+    box-shadow: 0 0 18px rgba(248, 24, 42, 0.55);
+}
+
+/* ── Hierarquia de risco ─────────────────────────────── */
+
+/* Ações perigosas: brasa forte, borda vermelha persistente */
+#shutdown,
+#reboot {
+    border: 1px solid rgba(248, 24, 42, 0.55);
+    box-shadow: 0 0 10px rgba(224, 20, 28, 0.2);
+}
+
+/* Ações seguras: luz rosa suave */
+#lock,
+#suspend {
+    border: 1px solid rgba(238, 111, 137, 0.35);
+}
+
+/* Ícones */
+#lock {
+    background-image: image(url("icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("icons/reboot.png"));
+}

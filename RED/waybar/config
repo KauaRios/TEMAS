@@ -1,0 +1,106 @@
+{
+    "include": [
+        "./modules/power_profile.jsonc"
+    ],
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "margin-top": 0,
+    "margin-left": 12,
+    "margin-bottom": 10,
+    "margin-right": 12,
+    "spacing": 4,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/window",
+        "custom/sep-left"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "custom/sep-right",
+        "cpu",
+        "memory",
+        "wireplumber",
+        "network",
+        "battery",
+        "tray",
+        "custom/power"
+    ],
+
+    "custom/sep-left":  { "format": "", "tooltip": false },
+    "custom/sep-right": { "format": "", "tooltip": false },
+
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "μ",
+            "2": "π",
+            "3": "σ",
+            "4": "τ",
+            "5": "λ",
+            "6": "α",
+            "7": "β",
+            "8": "γ",
+            "9": "δ",
+            "10": "ζ"
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e+1 1>/dev/null",
+        "on-scroll-down": "hyprctl dispatch workspace e-1 1>/dev/null",
+        "sort-by-number": true
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 40,
+        "separate-outputs": true
+    },
+    "clock": {
+        "format": "󰥔 {:%H:%M  󰃭 %d/%m}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "cpu": {
+        "interval": 2,
+        "format": " {usage}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 10,
+        "format": " {used:0.1f}G"
+    },
+    "wireplumber": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": ["", "", ""]
+    },
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 {ifname}",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+        "tooltip-format-wifi": "{essid} ({signaldBm}dBm) ",
+        "max-length": 20
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󱐋 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "tray": {
+        "spacing": 8
+    },
+    "custom/power": {
+        "format": " ⏻",
+        "tooltip": false,
+        "on-click": "wlogout"
+    }
+}
